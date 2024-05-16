@@ -1,3 +1,4 @@
+//GUI
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -19,6 +20,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
    private JButton start;
    private int dieValue;
    private JavaLand jl = new JavaLand();
+   boolean startVar; // to see if the start button has been pressed and the game has begun
 
 
    public Screen(){
@@ -27,14 +29,14 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
        die.setBounds(50,50,100,30);
        die.addActionListener(this);
        this.add(die);
+       die.setVisible(false);
 
        start = new JButton("Start");
-       start.setBounds(50,50,100,30);
+       start.setBounds(400,370,100,30);
        start.addActionListener(this);
        this.add(start);
-       start.setVisible(false);
 
-
+       startVar = false;
    }
    public Dimension getPreferredSize() {
        //Sets the size of the panel
@@ -42,40 +44,50 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
    }
 
 
-   public void paintComponent(Graphics g){
-       super.paintComponent(g);
-       startScreen(g);
-       drawDie(g,jl.diceRolled());
-       /*
-       number printed and number shown on screen are different
-       */
-   }
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        if(startVar){
+            drawDie(g,jl.diceRolled());
+        }
+        else if (startVar == false){
+            startScreen(g);
+        }
+        /*
+        number printed and number shown on screen are different
+        */
+    }
 
 
-   public void drawDie(Graphics g, int num){
-       dieValue = num;
-       g.setColor(Color.GREEN);
-       g.fillRect(20,0,50,50);
-       g.setColor(Color.BLACK);
-       Font font = new Font("Arial", Font.PLAIN,20);
-       g.setFont(font);
-       g.drawString(Integer.toString(num), 20,20);
-       //num is what the method diceRolled in JavaLand returns
-   }
+    public void drawDie(Graphics g, int num){
+        //System.out.println("method called");
+        //System.out.println("if statement called");
+        dieValue = num;
+        g.setColor(Color.GREEN);
+        g.fillRect(20,0,50,50);
+        g.setColor(Color.BLACK);
+        Font font = new Font("Arial", Font.PLAIN,20);
+        g.setFont(font);
+        g.drawString(Integer.toString(num), 20,20);
+        //num is what the method diceRolled in JavaLand returns
+    }
 
 
    public void startScreen(Graphics g){
        g.setColor(Color.CYAN);
        g.fillRect(0,0,1000,800);
-       start.setVisible(true);
    }
   
    //button methods
    public void actionPerformed(ActionEvent e){
        if(e.getSource() == die){
            System.out.println(dieValue);
-           repaint();
-       }
+        }
+        else if(e.getSource() == start){
+            startVar = true;
+            start.setVisible(false);
+            die.setVisible(true);
+        }
+        repaint();
    }
 
 
@@ -87,4 +99,3 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
    public void mouseReleased(MouseEvent e){}
    //create an animate method
 }
-
