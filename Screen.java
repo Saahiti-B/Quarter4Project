@@ -70,7 +70,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
     }
 
     public void drawBoard(Graphics g){
-        
+        //uses rectangles, some will have symbols
     }
     public void drawDie(Graphics g, int num){
         g.setColor(new Color(111, 78, 55));
@@ -87,10 +87,6 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
        g.setColor(backgroundTaupe);
        g.fillRect(0,0,1000,800);
    }
-
-    public void boardDraw(Graphics g){
-        
-    }
   
    //button methods
    public void actionPerformed(ActionEvent e){
