@@ -1,0 +1,20 @@
+import java.awt.Graphics;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.util.*;
+
+public class Americano extends Character{
+    private BufferedImage americano;
+
+    public Americano(){
+        try{
+            americano = ImageIO.read(new File("americano.png"));
+        }catch(IOException e){
+            System.out.println(e);
+        }
+    }
+}
