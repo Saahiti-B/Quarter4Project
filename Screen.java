@@ -22,9 +22,24 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
    private JavaLand jl = new JavaLand();
    boolean startVar; // to see if the start button has been pressed and the game has begun
 
+    // colors
+    private Color backgroundTaupe;
+    private Color boardCamel;
+    private Color boardBeige;
+    private Color boardChocolate;
+    private Color boardCinnamon;
 
    public Screen(){
        setLayout(null);
+
+       //Colors
+       backgroundTaupe = new Color(204, 160, 116);
+       boardCamel = new Color(201, 138, 75);
+       boardBeige = new Color(227, 180, 134);
+       boardChocolate = new Color(110, 68, 26);
+       boardCinnamon = new Color(138, 86, 36);
+	
+       //buttons
        die = new JButton("Roll Die");
        die.setBounds(50,50,100,30);
        die.addActionListener(this);
@@ -47,24 +62,20 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         if(startVar){
-            drawDie(g,jl.diceRolled());
+            drawDie(g,dieValue);
         }
         else if (startVar == false){
             startScreen(g);
         }
-        /*
-        number printed and number shown on screen are different
-        */
     }
 
-
+    public void drawBoard(Graphics g){
+        
+    }
     public void drawDie(Graphics g, int num){
-        //System.out.println("method called");
-        //System.out.println("if statement called");
-        dieValue = num;
-        g.setColor(Color.GREEN);
-        g.fillRect(20,0,50,50);
-        g.setColor(Color.BLACK);
+        g.setColor(new Color(111, 78, 55));
+        g.fillRect(10,0,50,50);
+        g.setColor(Color.WHITE);
         Font font = new Font("Arial", Font.PLAIN,20);
         g.setFont(font);
         g.drawString(Integer.toString(num), 20,20);
@@ -73,14 +84,18 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
 
 
    public void startScreen(Graphics g){
-       g.setColor(Color.CYAN);
+       g.setColor(backgroundTaupe);
        g.fillRect(0,0,1000,800);
    }
+
+    public void boardDraw(Graphics g){
+        
+    }
   
    //button methods
    public void actionPerformed(ActionEvent e){
        if(e.getSource() == die){
-           System.out.println(dieValue);
+            dieValue = jl.diceRolled();
         }
         else if(e.getSource() == start){
             startVar = true;
