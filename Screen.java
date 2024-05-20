@@ -63,6 +63,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         super.paintComponent(g);
         if(startVar){
             drawDie(g,dieValue);
+            drawBoard(g);
         }
         else if (startVar == false){
             startScreen(g);
@@ -70,8 +71,141 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
     }
 
     public void drawBoard(Graphics g){
-        //uses rectangles, some will have symbols
+        /*
+        private Color backgroundTaupe;
+        private Color boardCamel;
+        private Color boardBeige;
+        private Color boardChocolate;
+        private Color boardCinnamon;
+        */
+       //outlines the squares
+        g.setColor(boardChocolate);
+        g.drawRect(100,100,60,60);
+        g.drawRect(160,100,60,60);
+        g.drawRect(160,160,60,60);
+        g.drawRect(220,160,60,60);
+        g.drawRect(280,160,60,60);
+        g.drawRect(280,220,60,60);
+        //straight
+        g.drawRect(280,280,60,60);
+        g.drawRect(220,280,60,60);
+        g.drawRect(160,280,60,60);
+        g.drawRect(100,280,60,60);
+        //turn
+        g.drawRect(100,340,60,60);
+        //straight
+        g.drawRect(100,400,60,60);
+        g.drawRect(160,400,60,60);
+        g.drawRect(220,400,60,60);
+        g.drawRect(280,400,60,60);
+        g.drawRect(340,400,60,60);
+        g.drawRect(400,400,60,60);
+        //up 4 squares
+        g.drawRect(400,340,60,60);
+        g.drawRect(400,280,60,60);
+        g.drawRect(400,220,60,60);
+        g.drawRect(400,160,60,60);
+        //over 2
+        g.drawRect(460,160,60,60);
+        g.drawRect(520,160,60,60);
+        //down 6
+        g.drawRect(520,220,60,60);
+        g.drawRect(520,280,60,60);
+        g.drawRect(520,340,60,60);
+        g.drawRect(520,400,60,60);
+        g.drawRect(520,460,60,60);
+        g.drawRect(520,520,60,60);
+        //left 7
+        g.drawRect(460,520,60,60);
+        g.drawRect(400,520,60,60);
+        g.drawRect(340,520,60,60);
+        g.drawRect(280,520,60,60);
+        g.drawRect(220,520,60,60);
+        g.drawRect(160,520,60,60);
+        g.drawRect(100,520,60,60);
+        //beginning of board
+        g.setColor(boardBeige);
+        g.fillRect(100,100,60,60);
+        g.setColor(boardCamel);
+        g.fillRect(160,100,60,60);
+        g.setColor(boardCinnamon);
+        g.fillRect(160,160,60,60);
+        g.setColor(boardBeige);
+        g.fillRect(220,160,60,60);
+        //change colors
+        g.setColor(boardCamel);
+        g.fillRect(280,160,60,60);
+        g.setColor(boardCinnamon);
+        g.fillRect(280,220,60,60);
+        //straight
+        g.setColor(boardBeige);
+        g.fillRect(280,280,60,60);
+        g.setColor(boardCamel);
+        g.fillRect(220,280,60,60);
+        g.setColor(boardCinnamon);
+        g.fillRect(160,280,60,60);
+        g.setColor(boardBeige);
+        g.fillRect(100,280,60,60);
+        //turn
+        g.setColor(boardCamel);
+        g.fillRect(100,340,60,60);
+        //straight
+        g.setColor(boardCinnamon);
+        g.fillRect(100,400,60,60);
+        g.setColor(boardBeige);
+        g.fillRect(160,400,60,60);
+        g.setColor(boardCamel);
+        g.fillRect(220,400,60,60);
+        g.setColor(boardCinnamon);
+        g.fillRect(280,400,60,60);
+        g.setColor(boardBeige);
+        g.fillRect(340,400,60,60);
+        g.setColor(boardCamel);
+        g.fillRect(400,400,60,60);
+        //up 4 squares
+        g.setColor(boardCinnamon);
+        g.fillRect(400,340,60,60);
+        g.setColor(boardBeige);
+        g.fillRect(400,280,60,60);
+        g.setColor(boardCamel);
+        g.fillRect(400,220,60,60);
+        g.setColor(boardCinnamon);
+        g.fillRect(400,160,60,60);
+        //over 2
+        g.setColor(boardBeige);
+        g.fillRect(460,160,60,60);
+        g.setColor(boardCamel);
+        g.fillRect(520,160,60,60);
+        //down 6
+        g.setColor(boardCinnamon);
+        g.fillRect(520,220,60,60);
+        g.setColor(boardBeige);
+        g.fillRect(520,280,60,60);
+        g.setColor(boardCamel);
+        g.fillRect(520,340,60,60);
+        g.setColor(boardCinnamon);
+        g.fillRect(520,400,60,60);
+        g.setColor(boardBeige);
+        g.fillRect(520,460,60,60);
+        g.setColor(boardCamel);
+        g.fillRect(520,520,60,60);
+        //left 7
+        g.setColor(boardCinnamon);
+        g.fillRect(460,520,60,60);
+        g.setColor(boardBeige);
+        g.fillRect(400,520,60,60);
+        g.setColor(boardCamel);
+        g.fillRect(340,520,60,60);
+        g.setColor(boardCinnamon);
+        g.fillRect(280,520,60,60);
+        g.setColor(boardBeige);
+        g.fillRect(220,520,60,60);
+        g.setColor(boardCamel);
+        g.fillRect(160,520,60,60);
+        g.setColor(boardCinnamon);
+        g.fillRect(100,520,60,60);
     }
+
     public void drawDie(Graphics g, int num){
         g.setColor(new Color(111, 78, 55));
         g.fillRect(10,0,50,50);
