@@ -210,18 +210,25 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         g.setColor(new Color(111, 78, 55));
         g.fillRect(10,0,50,50);
         g.setColor(Color.WHITE);
-        Font font = new Font("Arial", Font.PLAIN,20);
+        Font font = new Font("Courier", Font.PLAIN,20);
         g.setFont(font);
         g.drawString(Integer.toString(num), 20,20);
         //num is what the method diceRolled in JavaLand returns
     }
 
 
-   public void startScreen(Graphics g){
-       g.setColor(backgroundTaupe);
-       g.fillRect(0,0,1000,800);
-   }
-  
+    public void startScreen(Graphics g){
+        g.setColor(backgroundTaupe);
+        g.fillRect(0,0,1000,800);
+    }
+
+    public void endGameScreen(Graphics g){
+        g.setColor(new Color(53, 30, 16));
+        g.fillRect(0,0,1000,800);
+        Font font = new Font("Courier", Font.PLAIN, 30);
+        g.drawString("Game Over", 300,400);
+    }
+    
    //button methods
    public void actionPerformed(ActionEvent e){
        if(e.getSource() == die){
