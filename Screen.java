@@ -14,24 +14,35 @@ import java.util.ArrayList;
 
 
 public class Screen extends JPanel implements MouseListener, ActionListener{
-   //arraylist of cards, (one for discard, one for to be used (polymorphism))
-   ArrayList<ActionCard> actionCard = new ArrayList<ActionCard>();
-   private JButton die;
-   private JButton start;
-   private int dieValue;
-   private JavaLand jl = new JavaLand();
-   boolean startVar; // to see if the start button has been pressed and the game has begun
-   private boolean[][] board;
-   private String row0;
-   private String row1;
-   private String row2;
-   private String row3;
-   private String row4;
-   private String row5;
-   private String row6;
-   private String row7;
-   private String row8;
-   private String row9;
+    //arraylist of cards, (one for discard, one for to be used (polymorphism))
+    ArrayList<ActionCard> actionCard;
+
+    //players
+    ArrayList<Character> players;
+    Cappuccino cap;
+    Americano ame;
+    Mocha moc;
+    Latte lat;
+
+    //buttons
+    private JButton die;
+    private JButton start;
+    private int dieValue;
+    private JavaLand jl;
+    boolean startVar; // to see if the start button has been pressed and the game has begun
+    private boolean[][] board;
+
+    //rows
+    private String row0;
+    private String row1;
+    private String row2;
+    private String row3;
+    private String row4;
+    private String row5;
+    private String row6;
+    private String row7;
+    private String row8;
+    private String row9;
 
     // colors
     private Color backgroundTaupe;
@@ -74,13 +85,20 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
        start.addActionListener(this);
        this.add(start);
 
-       board = new boolean[10][10];
+        board = new boolean[10][10];
+        actionCard = new ArrayList<ActionCard>();
+        
+        jl = new JavaLand();
 
+        players = new ArrayList<Character>();
+        cap = new Cappuccino(700,400);
+        players.add(cap);
+        
        startVar = false;
    }
    public Dimension getPreferredSize() {
        //Sets the size of the panel
-       return new Dimension(1000,800);
+       return new Dimension(1500,800);
    }
 
     public void paintComponent(Graphics g){
@@ -88,6 +106,8 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         if(startVar){
             drawDie(g,dieValue);
             drawBoard(g);
+            howToPlay(g);
+            //players.get(0).drawMe(g);
         }
         else if (startVar == false){
             startScreen(g);
@@ -136,231 +156,184 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
             }
         }
         */
-        int x = 100;
+        int x = 50;
         int y = 80;
         g.setColor(boardBeige);
         for(int i = 0; i < row0.length(); i++){
             if(row0.charAt(i) == '1'){
+                g.setColor(boardBeige);
                 board[0][i] = true;
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
+            else{
+                g.setColor(Color.WHITE);
+                g.fillRect(x,y,60,60);
+                x+=60;
+            }
         }
-        x = 100;
+        x = 50;
         y += 60;
         g.setColor(boardCamel);
         for(int i = 0; i < row1.length(); i++){
             if(row1.charAt(i) == '1'){
+                g.setColor(boardCamel);
                 board[1][i] = true;
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
+            else{
+                g.setColor(Color.WHITE);
+                g.fillRect(x,y,60,60);
+                x+=60;
+            }
         }
-        x = 100;
+        x = 50;
         y += 60;
         g.setColor(boardCinnamon);
         for(int i = 0; i < row2.length(); i++){
             if(row2.charAt(i) == '1'){
+                g.setColor(boardCinnamon);
                 board[2][i] = true;
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
+            else{
+                g.setColor(Color.WHITE);
+                g.fillRect(x,y,60,60);
+                x+=60;
+            }
         }
-        x = 100;
+        x = 50;
         y += 60;
         g.setColor(boardChocolate);
         for(int i = 0; i < row3.length(); i++){
             if(row3.charAt(i) == '1'){
+                g.setColor(boardChocolate);
                 board[3][i] = true;
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
+            else{
+                g.setColor(Color.WHITE);
+                g.fillRect(x,y,60,60);
+                x+=60;
+            }
         }
-        x = 100;
+        x = 50;
         y += 60;
         g.setColor(boardCinnamon);
         for(int i = 0; i < row4.length(); i++){
             if(row4.charAt(i) == '1'){
+                g.setColor(boardCinnamon);
                 board[4][i] = true;
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
+            else{
+                g.setColor(Color.WHITE);
+                g.fillRect(x,y,60,60);
+                x+=60;
+            }
         }
-        x = 100;
+        x = 50;
         y += 60;
+        //olive green 
+        g.setColor(new Color(128,128,0));
         for(int i = 0; i < row5.length(); i++){
             if(row5.charAt(i) == '1'){
+                g.setColor(new Color(128,128,0));
                 board[5][i] = true;
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
+            else{
+                g.setColor(Color.WHITE);
+                g.fillRect(x,y,60,60);
+                x+=60;
+            }
         }
-        x = 100;
+        x = 50;
         y += 60;
+        //dark red
+        g.setColor( new Color(139, 0, 0));
         for(int i = 0; i < row6.length(); i++){
             if(row6.charAt(i) == '1'){
+                g.setColor( new Color(139, 0, 0));
                 board[6][i] = true;
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
+            else{
+                g.setColor(Color.WHITE);
+                g.fillRect(x,y,60,60);
+                x+=60;
+            }
         }
-        x = 100;
+        x = 50;
         y += 60;
+        //ecru
+        g.setColor(new Color(194, 178, 129));
         for(int i = 0; i < row7.length(); i++){
             if(row7.charAt(i) == '1'){
+                g.setColor(new Color(194, 178, 129));
                 board[7][i] = true;
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
+            else{
+                g.setColor(Color.WHITE);
+                g.fillRect(x,y,60,60);
+                x+=60;
+            }
         }
-        x = 100;
+        x = 50;
         y += 60;
+        //burnt sienna
+        g.setColor(new Color(233,116,81));
         for(int i = 0; i < row8.length(); i++){
             if(row8.charAt(i) == '1'){
+                g.setColor(new Color(233,116,81));
                 board[8][i] = true;
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
+            else{
+                g.setColor(Color.WHITE);
+                g.fillRect(x,y,60,60);
+                x+=60;
+            }
         }
-        x = 100;
+        x = 50;
         y +=60;
+        //khaki
+        g.setColor(new Color(240,230,140));
         for(int i = 0; i < row9.length(); i++){
             if(row9.charAt(i) == '1'){
+                g.setColor(new Color(240,230,140));
                 board[9][i] = true;
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
+            else{
+                g.setColor(Color.WHITE);
+                g.fillRect(x,y,60,60);
+                x+=60;
+            }
         }
-        //x = 100;
-        //y += 60;
-        /*
-        g.setColor(boardChocolate);
-        g.drawRect(100,100,60,60);
-        g.drawRect(160,100,60,60);
-        g.drawRect(160,160,60,60);
-        g.drawRect(220,160,60,60);
-        g.drawRect(280,160,60,60);
-        g.drawRect(280,220,60,60);
-        //straight
-        g.drawRect(280,280,60,60);
-        g.drawRect(220,280,60,60);
-        g.drawRect(160,280,60,60);
-        g.drawRect(100,280,60,60);
-        //turn
-        g.drawRect(100,340,60,60);
-        //straight
-        g.drawRect(100,400,60,60);
-        g.drawRect(160,400,60,60);
-        g.drawRect(220,400,60,60);
-        g.drawRect(280,400,60,60);
-        g.drawRect(340,400,60,60);
-        g.drawRect(400,400,60,60);
-        //up 4 squares
-        g.drawRect(400,340,60,60);
-        g.drawRect(400,280,60,60);
-        g.drawRect(400,220,60,60);
-        g.drawRect(400,160,60,60);
-        //over 2
-        g.drawRect(460,160,60,60);
-        g.drawRect(520,160,60,60);
-        //down 6
-        g.drawRect(520,220,60,60);
-        g.drawRect(520,280,60,60);
-        g.drawRect(520,340,60,60);
-        g.drawRect(520,400,60,60);
-        g.drawRect(520,460,60,60);
-        g.drawRect(520,520,60,60);
-        //left 7
-        g.drawRect(460,520,60,60);
-        g.drawRect(400,520,60,60);
-        g.drawRect(340,520,60,60);
-        g.drawRect(280,520,60,60);
-        g.drawRect(220,520,60,60);
-        g.drawRect(160,520,60,60);
-        g.drawRect(100,520,60,60);
-        //beginning of board
-        g.setColor(boardBeige);
-        g.fillRect(100,100,60,60);
-        g.setColor(boardCamel);
-        g.fillRect(160,100,60,60);
-        g.setColor(boardCinnamon);
-        g.fillRect(160,160,60,60);
-        g.setColor(boardBeige);
-        g.fillRect(220,160,60,60);
-        //change colors
-        g.setColor(boardCamel);
-        g.fillRect(280,160,60,60);
-        g.setColor(boardCinnamon);
-        g.fillRect(280,220,60,60);
-        //straight
-        g.setColor(boardBeige);
-        g.fillRect(280,280,60,60);
-        g.setColor(boardCamel);
-        g.fillRect(220,280,60,60);
-        g.setColor(boardCinnamon);
-        g.fillRect(160,280,60,60);
-        g.setColor(boardBeige);
-        g.fillRect(100,280,60,60);
-        //turn
-        g.setColor(boardCamel);
-        g.fillRect(100,340,60,60);
-        //straight
-        g.setColor(boardCinnamon);
-        g.fillRect(100,400,60,60);
-        g.setColor(boardBeige);
-        g.fillRect(160,400,60,60);
-        g.setColor(boardCamel);
-        g.fillRect(220,400,60,60);
-        g.setColor(boardCinnamon);
-        g.fillRect(280,400,60,60);
-        g.setColor(boardBeige);
-        g.fillRect(340,400,60,60);
-        g.setColor(boardCamel);
-        g.fillRect(400,400,60,60);
-        //up 4 squares
-        g.setColor(boardCinnamon);
-        g.fillRect(400,340,60,60);
-        g.setColor(boardBeige);
-        g.fillRect(400,280,60,60);
-        g.setColor(boardCamel);
-        g.fillRect(400,220,60,60);
-        g.setColor(boardCinnamon);
-        g.fillRect(400,160,60,60);
-        //over 2
-        g.setColor(boardBeige);
-        g.fillRect(460,160,60,60);
-        g.setColor(boardCamel);
-        g.fillRect(520,160,60,60);
-        //down 6
-        g.setColor(boardCinnamon);
-        g.fillRect(520,220,60,60);
-        g.setColor(boardBeige);
-        g.fillRect(520,280,60,60);
-        g.setColor(boardCamel);
-        g.fillRect(520,340,60,60);
-        g.setColor(boardCinnamon);
-        g.fillRect(520,400,60,60);
-        g.setColor(boardBeige);
-        g.fillRect(520,460,60,60);
-        g.setColor(boardCamel);
-        g.fillRect(520,520,60,60);
-        //left 7
-        g.setColor(boardCinnamon);
-        g.fillRect(460,520,60,60);
-        g.setColor(boardBeige);
-        g.fillRect(400,520,60,60);
-        g.setColor(boardCamel);
-        g.fillRect(340,520,60,60);
-        g.setColor(boardCinnamon);
-        g.fillRect(280,520,60,60);
-        g.setColor(boardBeige);
-        g.fillRect(220,520,60,60);
-        g.setColor(boardCamel);
-        g.fillRect(160,520,60,60);
-        g.setColor(boardCinnamon);
-        g.fillRect(100,520,60,60);
-        */
+        //ending box
+        //josh straus's code for rectangle with border
+        g.setColor(Color.BLACK);
+        rectangleWithBorders(g, 290, 320, 120, 120, 10);
+        
     }
+
+    public void rectangleWithBorders(Graphics g, int x, int y, int width, int height, int borderThickness) {
+		g.setColor(Color.BLACK);
+		for (int i = 0; i < borderThickness; i++) {
+			g.drawRect(x + i, y + i, width - (2 * i), height - (2 * i));
+		}
+	}
 
     public void drawDie(Graphics g, int num){
         //add animation
@@ -376,20 +349,24 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
 
     public void startScreen(Graphics g){
         g.setColor(backgroundTaupe);
-        g.fillRect(0,0,1000,800);
+        g.fillRect(0,0,1500,800);
     }
 
     public void endGameScreen(Graphics g){
         g.setColor(new Color(53, 30, 16));
-        g.fillRect(0,0,1000,800);
+        g.fillRect(0,0,1500,800);
         Font font = new Font("Courier", Font.PLAIN, 30);
         g.drawString("Game Over", 300,400);
     }
     
     public void howToPlay(Graphics g){
-        g.setColor(Color.WHITE);
-        Font font = new Font("Courier", Font.PLAIN, 20);
-        //g.drawString("")
+        g.setColor(Color.BLACK);
+        Font font = new Font("Courier", Font.PLAIN, 25);
+        g.drawString("INSTRUCTIONS:", 660, 300);
+        g.drawString("1)Select a figurine!",660,325);
+        g.drawString("2)Roll the dice and your figure will move forward!",660,350);
+        g.drawString("3) If your figurine lands on an action or trivia card square,",660,375);
+        g.drawString("follow the prompts to complete your turn!",660,400);
     }
     
    //button methods
