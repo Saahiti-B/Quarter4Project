@@ -10,11 +10,17 @@ import java.util.*;
 public class Cappuccino extends Character{
     private BufferedImage cap;
 
-    public Cappuccino(){
+    public Cappuccino(int x, int y){
+        super(x, y);
+
         try{
             cap = ImageIO.read(new File("cappuccino.png"));
         }catch(IOException e){
             System.out.println(e);
         }
+    }
+
+    public void drawMe(Graphics g){
+        g.drawImage(cap,getX(),getY(), null);
     }
 }
