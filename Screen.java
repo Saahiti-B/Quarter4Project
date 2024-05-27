@@ -75,7 +75,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
 	
        //buttons
        die = new JButton("Roll Die");
-       die.setBounds(50,50,100,30);
+       die.setBounds(670,230,100,30);
        die.addActionListener(this);
        this.add(die);
        die.setVisible(false);
@@ -222,10 +222,10 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         }
         x = 50;
         y += 60;
-        g.setColor(boardCinnamon);
+        g.setColor(boardBeige);
         for(int i = 0; i < row4.length(); i++){
             if(row4.charAt(i) == '1'){
-                g.setColor(boardCinnamon);
+                g.setColor(boardBeige);
                 board[4][i] = true;
                 g.fillRect(x,y,60,60);
                 x+= 60;
@@ -238,11 +238,11 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         }
         x = 50;
         y += 60;
-        //olive green 
-        g.setColor(new Color(128,128,0));
+       
+        g.setColor(boardChocolate);
         for(int i = 0; i < row5.length(); i++){
             if(row5.charAt(i) == '1'){
-                g.setColor(new Color(128,128,0));
+                g.setColor(boardChocolate);
                 board[5][i] = true;
                 g.fillRect(x,y,60,60);
                 x+= 60;
@@ -255,11 +255,11 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         }
         x = 50;
         y += 60;
-        //dark red
-        g.setColor( new Color(139, 0, 0));
+   
+        g.setColor( boardCinnamon);
         for(int i = 0; i < row6.length(); i++){
             if(row6.charAt(i) == '1'){
-                g.setColor( new Color(139, 0, 0));
+                g.setColor( boardCinnamon);
                 board[6][i] = true;
                 g.fillRect(x,y,60,60);
                 x+= 60;
@@ -272,11 +272,11 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         }
         x = 50;
         y += 60;
-        //ecru
-        g.setColor(new Color(194, 178, 129));
+    
+        g.setColor(boardBeige);
         for(int i = 0; i < row7.length(); i++){
             if(row7.charAt(i) == '1'){
-                g.setColor(new Color(194, 178, 129));
+                g.setColor(boardBeige);
                 board[7][i] = true;
                 g.fillRect(x,y,60,60);
                 x+= 60;
@@ -289,11 +289,11 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         }
         x = 50;
         y += 60;
-        //burnt sienna
-        g.setColor(new Color(233,116,81));
+
+        g.setColor(boardCamel);
         for(int i = 0; i < row8.length(); i++){
             if(row8.charAt(i) == '1'){
-                g.setColor(new Color(233,116,81));
+                g.setColor(boardCamel);
                 board[8][i] = true;
                 g.fillRect(x,y,60,60);
                 x+= 60;
@@ -306,11 +306,11 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         }
         x = 50;
         y +=60;
-        //khaki
-        g.setColor(new Color(240,230,140));
+ 
+        g.setColor(boardChocolate);
         for(int i = 0; i < row9.length(); i++){
             if(row9.charAt(i) == '1'){
-                g.setColor(new Color(240,230,140));
+                g.setColor(boardChocolate);
                 board[9][i] = true;
                 g.fillRect(x,y,60,60);
                 x+= 60;
@@ -325,6 +325,10 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         //josh straus's code for rectangle with border
         g.setColor(Color.BLACK);
         rectangleWithBorders(g, 290, 320, 120, 120, 10);
+        //finishing square
+        g.setColor(Color.WHITE);
+        g.fillRect(295,325,110,110);
+
         
     }
 
@@ -338,11 +342,11 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
     public void drawDie(Graphics g, int num){
         //add animation
         g.setColor(new Color(111, 78, 55));
-        g.fillRect(10,0,50,50);
+        g.fillRect(690,180,50,50);
         g.setColor(Color.WHITE);
         Font font = new Font("Courier", Font.PLAIN,20);
         g.setFont(font);
-        g.drawString(Integer.toString(num), 27,30);
+        g.drawString(Integer.toString(num), 708,212);
         //num is what the method diceRolled in JavaLand returns
     }
 
