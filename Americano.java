@@ -10,11 +10,17 @@ import java.util.*;
 public class Americano extends Character{
     private BufferedImage americano;
 
-    public Americano(){
+    public Americano(int x, int y){
+        super(x, y);
+
         try{
             americano = ImageIO.read(new File("americano.png"));
         }catch(IOException e){
             System.out.println(e);
         }
+    }
+
+    public void drawMe(Graphics g){
+        g.drawImage(americano, get(X) ,get(Y), null);
     }
 }
