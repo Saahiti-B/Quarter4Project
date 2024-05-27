@@ -10,11 +10,17 @@ import java.util.*;
 public class Mocha extends Character{
     private BufferedImage mocha;
     
-    public Mocha(){
+    public Mocha(int x, int y){
+        super(x, y);
+
         try{
             mocha = ImageIO.read(new File("mocha.png"));
         }catch(IOException e){
             System.out.println(e);
         }
+    }
+
+    public void drawMe(Graphics g){
+        g.drawImage(mocha,getX(),getY(), null);
     }
 }
