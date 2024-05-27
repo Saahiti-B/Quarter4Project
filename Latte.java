@@ -10,11 +10,17 @@ import java.util.*;
 public class Latte extends Character{
     private BufferedImage latte;
     
-    public Latte(){
+    public Latte(int x, int y){
+        super(x, y);
+
         try{
             latte = ImageIO.read(new File("latte.png"));
         }catch(IOException e){
             System.out.println(e);
         }
+    }
+
+    public void drawMe(Graphics g){
+        g.drawImage(latte,getX(),getY(), null);
     }
 }
