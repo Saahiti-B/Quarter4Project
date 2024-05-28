@@ -23,6 +23,9 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
     Americano ame;
     Mocha moc;
     Latte lat;
+    
+    //sound
+    Sound s;
 
     //buttons
     private JButton die;
@@ -89,6 +92,8 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         actionCard = new ArrayList<ActionCard>();
         
         jl = new JavaLand();
+
+        s = new Sound();
 
         players = new ArrayList<Character>();
         cap = new Cappuccino(700,400);
@@ -377,6 +382,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
    public void actionPerformed(ActionEvent e){
        if(e.getSource() == die){
             dieValue = jl.diceRolled();
+            s.playSound();
         }
         else if(e.getSource() == start){
             startVar = true;
