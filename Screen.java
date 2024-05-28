@@ -95,10 +95,12 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
 
         s = new Sound();
 
-        cap = new Cappuccino(900,200);
+        cap = new Cappuccino(100,650);
+        ame = new Americano(50, 650);
+        moc = new Mocha(50, 700);
+        lat = new Latte(100, 700);
 
         players = new ArrayList<Character>();
-        cap = new Cappuccino(700,400);
         players.add(cap);
         
        startVar = false;
@@ -115,6 +117,10 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
             drawBoard(g);
             howToPlay(g);
             cap.drawMe(g);
+            ame.drawMe(g);
+            lat.drawMe(g);
+            moc.drawMe(g);
+
             //players.get(0).drawMe(g);
         }
         else if (startVar == false){
