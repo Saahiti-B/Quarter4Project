@@ -84,7 +84,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
        die.setVisible(false);
 
        start = new JButton("Start"); //as about start vs restart
-       start.setBounds(400,370,100,30);
+       start.setBounds(700,370,100,30);
        start.addActionListener(this);
        this.add(start);
 
@@ -94,6 +94,8 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         jl = new JavaLand();
 
         s = new Sound();
+
+        cap = new Cappuccino(900,200);
 
         players = new ArrayList<Character>();
         cap = new Cappuccino(700,400);
@@ -112,6 +114,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
             drawDie(g,dieValue);
             drawBoard(g);
             howToPlay(g);
+            cap.drawMe(g);
             //players.get(0).drawMe(g);
         }
         else if (startVar == false){
@@ -120,47 +123,6 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
     }
 
     public void drawBoard(Graphics g){
-        /*
-        private Color backgroundTaupe;
-        private Color boardCamel;
-        private Color boardBeige;
-        private Color boardChocolate;
-        private Color boardCinnamon;
-        */
-        //for setting values to true or false
-        /*
-        for(int c = 0; c < board[0].length; c++){
-            for(int r = board.length - 1; r <= 0; r--){
-                if(c == 0){
-                    board[r][c] = true;
-                }
-                else if(c == 1){
-                    if(r == 0){
-                        board[r][c] = true;
-                    }
-                }
-                
-                else if(c == 2){
-
-                }
-                
-            }
-        }
-        //drawing the actual values
-        g.setColor(boardBeige);
-        int x = 20;
-        int y = 600;
-        for(int i = 0;i < board.length; i++){
-            for(int j = 0; j < board[i].length; j++){
-                if(board[i][j] == true){
-                    g.fillRect(x,y,60,60);
-                    y -= 60;
-                }
-                y = 600;
-                x += 60;
-            }
-        }
-        */
         int x = 50;
         int y = 80;
         g.setColor(boardBeige);
@@ -334,6 +296,8 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         g.setColor(Color.WHITE);
         g.fillRect(295,325,110,110);
 
+        //drawActionCard
+        drawActionCard(g);
         
     }
 
@@ -343,6 +307,13 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
 			g.drawRect(x + i, y + i, width - (2 * i), height - (2 * i));
 		}
 	}
+
+    public void drawActionCard(Graphics g){
+        g.setColor(Color.CYAN);
+        g.fillRect(60,95,40,40);
+        g.fillRect(600,95,40,40);
+        g.fillRect(600,630,40,40);
+    }
 
     public void drawDie(Graphics g, int num){
         //add animation
