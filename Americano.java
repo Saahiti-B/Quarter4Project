@@ -21,6 +21,19 @@ public class Americano extends Character{
     }
 
     public void drawMe(Graphics g){
-        g.drawImage(americano, get(X) ,get(Y), null);
+        g.drawImage(americano, getX() ,getY(), null);
+    }
+
+    public void moveUp(int y){
+        y--;
+    }
+    public void moveDown(int y){
+        y++;
+    }
+    public void moveRight(int x){
+        x++;
+    }
+    public void moveLeft(int x){
+        x--;
     }
 }
