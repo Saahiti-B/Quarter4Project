@@ -9,6 +9,8 @@ import java.util.*;
 
 public class Cappuccino extends Character{
     private BufferedImage cap;
+    private int x;
+    private int y;
 
     public Cappuccino(int x, int y){
         super(x, y);
@@ -21,6 +23,19 @@ public class Cappuccino extends Character{
     }
 
     public void drawMe(Graphics g){
-        g.drawImage(cap,getX(),getY(), null);
+        g.drawImage(cap,super.getX(),super.getY(), null);
+    }
+
+    public void moveUp(int y){
+        y--;
+    }
+    public void moveDown(int y){
+        y++;
+    }
+    public void moveRight(int x){
+        x++;
+    }
+    public void moveLeft(int x){
+        x--;
     }
 }
