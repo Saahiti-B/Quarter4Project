@@ -12,7 +12,13 @@ import java.awt.event.MouseEvent;
 import javax.swing.JTextField;
 import java.util.ArrayList;
 
-
+/*
+win condition: whoever gets to the center first
+roll die to move forward, ex. rolled 6, move 6 squares forward
+action cards can move you forwards or backwards
+trivia questions need to be correctly answered to advance
+*/
+//choose a better background color than white
 public class Screen extends JPanel implements MouseListener, ActionListener{
     //arraylist of cards, (one for discard, one for to be used (polymorphism))
     ArrayList<ActionCard> actionCard;
@@ -48,6 +54,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
     private String row9;
 
     // colors
+    //choose a better background color than white
     private Color backgroundTaupe;
     private Color boardCamel;
     private Color boardBeige;
@@ -83,8 +90,8 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
        this.add(die);
        die.setVisible(false);
 
-       start = new JButton("Start"); //as about start vs restart
-       start.setBounds(700,370,100,30);
+       start = new JButton("Start"); //ask about start vs restart
+       start.setBounds(670,370,100,30);
        start.addActionListener(this);
        this.add(start);
 
@@ -100,8 +107,11 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         moc = new Mocha(50, 700);
         lat = new Latte(100, 700);
 
-        players = new ArrayList<Character>();
+        players = new ArrayList<Character>(); //0 is cap, 1, is ame, 2 is moc, 3 is lat
         players.add(cap);
+        players.add(ame);
+        players.add(moc);
+        players.add(lat);
         
        startVar = false;
    }
@@ -120,7 +130,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
             ame.drawMe(g);
             lat.drawMe(g);
             moc.drawMe(g);
-
+            //0 is cap, 1, is ame, 2 is moc, 3 is lat
             //players.get(0).drawMe(g);
         }
         else if (startVar == false){
@@ -377,4 +387,15 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
    public void mousePressed(MouseEvent e){}
    public void mouseReleased(MouseEvent e){}
    //create an animate method
+    public void animate(){
+        while(true){
+            //have move methods for ame, cap, lat, moc in here
+            try{
+                Thread.sleep(10);
+            }catch(InterruptedException ex){
+                Thread.currentThread().interrupt();
+            }
+            repaint();
+        }
+    }
 }
