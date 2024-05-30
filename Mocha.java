@@ -23,17 +23,4 @@ public class Mocha extends Character{
     public void drawMe(Graphics g){
         g.drawImage(mocha,getX(),getY(), null);
     }
-
-    public void moveUp(int y){
-        y--;
-    }
-    public void moveDown(int y){
-        y++;
-    }
-    public void moveRight(int x){
-        x++;
-    }
-    public void moveLeft(int x){
-        x--;
-    }
 }
