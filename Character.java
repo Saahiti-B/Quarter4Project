@@ -1,4 +1,5 @@
-public class Character{
+import java.awt.Graphics;
+public abstract class Character{
     /*
     this one is a generic character, has a move method that is used throughout
     import images for the characters
@@ -27,11 +28,18 @@ public class Character{
 		this.y = y;
 	}
 
-    public void move(int forward){
-       /*forward*= 60;
-        if(forward %)
-        x+=forward;
-        y+=down;  
-        */
+    public void moveUp(){
+        y -= 60;
     }
+    public void moveDown(){
+        y += 60;
+    }
+    public void moveRight(){
+        x += 60;
+    }
+    public void moveLeft(){
+        x -= 60;
+    }
+
+    public abstract void drawMe(Graphics g);
 }
