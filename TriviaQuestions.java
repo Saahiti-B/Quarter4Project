@@ -9,12 +9,14 @@ public class TriviaQuestions extends ActionCard{
     private int x;
     private int y;
 
+
     public TriviaQuestions(Color temp, int x, int y){
         super(temp, x, y);
         //questions = new ArrayList<String>();
         //questions.add("What is a word used to describe cold coffee? a)hot b)iced c) frothy");
         //questions.add("What is a word for a machine used to make foamy milk? a)roaster b)espresso c)frother");
         //questions.add()
+
 
         questions = new String[5];
         questions[0] = "What is a word used to describe cold coffee? a)hot b)iced c) frothy"; //iced
