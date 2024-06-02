@@ -18,18 +18,17 @@ public class ActionMove extends ActionCard{
         super(color,x,y);
     }
 
-    public void drawSquare(Graphics g){
-        g.setColor(super.getCardColor());
-        g.fillRect(60,95,40,40);
-        g.fillRect(600,95,40,40);
-        g.fillRect(600,630,40,40);
-    }
-
     public void drawCard(Graphics g){
-        //g.drawString
-    }
-    public void drawType(Graphics g){
-        //g.drawString
+        g.setColor(super.getCardColor());
+        g.fillRect(55,85,50,50);
+        g.fillRect(595,85,50,50);
+        g.fillRect(595,625,50,50);
+
+        g.setColor(Color.BLACK);
+        Font font = new Font("Courier", Font.PLAIN, 7);
+        g.drawString("MOVE", 57, 115);
+        g.drawString("MOVE", 597, 115);
+        g.drawString("MOVE", 597, 655);
     }
 }
 
