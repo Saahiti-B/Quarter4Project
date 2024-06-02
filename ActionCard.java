@@ -18,9 +18,7 @@ public abstract class ActionCard{
 
     public void drawMe(Graphics g){
 		drawCard(g);
-		drawType(g);
 	}
-
 
 	public int getX(){
 		return x;
@@ -43,6 +41,5 @@ public abstract class ActionCard{
 	}
 
 	public abstract void drawCard(Graphics g);
-	
-	public abstract void drawType(Graphics g);
+
 }
