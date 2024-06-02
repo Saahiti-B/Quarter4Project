@@ -30,6 +30,13 @@ Americano ame;
 Mocha moc;
 Latte lat;
 
+//cards
+ActionCard am;
+ActionCard tq;
+
+//image
+FinishCup fc;
+
 //sound
 Sound s;
 
@@ -147,6 +154,13 @@ cap = new Cappuccino(100,650);
 ame = new Americano(50, 650);
 moc = new Mocha(50, 700);
 lat = new Latte(100, 700);
+
+//cards
+am = new ActionMove(Color.WHITE,50,50);
+tq = new TriviaQuestions(Color.BLACK,50,50);
+
+//image
+fc = new FinishCup();
 
 players = new ArrayList<Character>(); //0 is cap, 1, is ame, 2 is moc, 3 is lat
 players.add(cap);
@@ -356,6 +370,12 @@ rectangleWithBorders(g, 290, 320, 120, 120, 10);
 g.setColor(Color.WHITE);
 g.fillRect(295,325,110,110);
 
+//draw cards
+am.drawCard(g);
+tq.drawCard(g);
+
+//draw image
+fc.drawImage(g);
 
 
 }
@@ -441,7 +461,10 @@ else if(e.getSource() == start){
     startVar = true;
     start.setVisible(false);
     die.setVisible(true);
-}
+} 
+//else if (showQuestionA = true){
+    //code for whichever button is true and pressed then continue, for false options, set player invisible
+//}
 repaint();
 }
 
