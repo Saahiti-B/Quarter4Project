@@ -406,145 +406,158 @@ public Screen(){
             for(int x = 0;x < dieValue; x++){
                 //counterTemp++;
                 if((j + 1) < 10 && board[i][j + 1] == true){ // if square to the right
-                    System.out.println("moving right");
+                    System.out.println("moving right 0");
                     players.get(index).moveRight();
                     capX++;
                     j++;
+                    /*
+                    if(j == 9){
+                        j = 0;
+                    }
+                    */
                 }
                 else if((i - 1) >= 0 && board[i - 1][j] == true){ //if square directly above
-                    System.out.println("moving up");
+                    System.out.println("moving up 0");
                     players.get(index).moveUp();
                     capY--;
                     i--;
                 }
                 else if((i + 1) < 10 && board[i + 1][j] == true){ //if square directly below
-                    System.out.println("moving down");
+                    System.out.println("moving down 0");
                     players.get(index).moveDown();
                     capY++;
                     i++;
                 }
-                else if( (j -1) >= 0 && board[i][j - 1] == true){ //if square to the left
-                    System.out.println("moving left");
+                else if((j - 1) >= 0 && board[i][j - 1] == true){ //if square to the left
+                    System.out.println("moving left 0");
                     players.get(index).moveLeft();
                     capX--;
                     j--;
                 }
+                System.out.println("i = " + i + "\nj = " + j+"\ncapX= "+capX);
+
             } 
         }
         else if(index == 1){
             for(int x = 0;x < dieValue; x++){
-            //counterTemp++;
+                counterTemp++;
                 if((j + 1) < 10 && board[i][j + 1] == true){ // if square to the right
-                    System.out.println("moving right");
+                    System.out.println("moving right 1");
                     players.get(index).moveRight();
                     ameX++;
                     j++;
                 }
                 else if((i - 1) >= 0 && board[i - 1][j] == true){ //if square directly above
-                    System.out.println("moving up");
+                    System.out.println("moving up 1");
                     players.get(index).moveUp();
                     ameY--;
                     i--;
                 }
                 else if((i + 1) < 10 && board[i + 1][j] == true){ //if square directly below
-                    System.out.println("moving down");
+                    System.out.println("moving down 1");
                     players.get(index).moveDown();
                     ameY++;
                     i++;
                 }
                 else if( (j -1) >= 0 && board[i][j - 1] == true){ //if square to the left
-                    System.out.println("moving left");
+                    System.out.println("moving left 1");
                     players.get(index).moveLeft();
                     ameX--;
                     j--;
                 }
+                System.out.println("i = " + i + "\nj = " + j+"\nameX= "+ameX);
             } 
         }
         else if(index == 2){
             for(int x = 0;x < dieValue; x++){
                 //counterTemp++;
                 if((j + 1) < 10 && board[i][j + 1] == true){ // if square to the right
-                    System.out.println("moving right");
+                    System.out.println("moving right 2");
                     players.get(index).moveRight();
                     mocX++;
                     j++;
                 }
                 if((i - 1) >= 0 && board[i - 1][j] == true){ //if square directly above
-                    System.out.println("moving up");
+                    System.out.println("moving up 2");
                     players.get(index).moveUp();
                     mocY--;
                     i--;
                 }
                 else if((i + 1) < 10 && board[i + 1][j] == true){ //if square directly below
-                    System.out.println("moving down");
+                    System.out.println("moving down 2");
                     players.get(index).moveDown();
                     mocY++;
                     i++;
                 }
                 else if( (j -1) >= 0 && board[i][j - 1] == true){ //if square to the left
-                    System.out.println("moving left");
+                    System.out.println("moving left 2");
                     players.get(index).moveLeft();
                     mocX--;
                     j--;
                 }
+                System.out.println("i = " + i + "\nj = " + j+"\nmocX= "+mocX);
             } 
         }
         else if(index == 3){
             for(int x = 0;x < dieValue; x++){
                 //counterTemp++;
                 if((j + 1) < 10 && board[i][j + 1] == true){ // if square to the right
-                    System.out.println("moving right");
+                    System.out.println("moving right 3");
                     players.get(index).moveRight();
                     latX++;
                     j++;
                 }
                 if((i - 1) >= 0 && board[i - 1][j] == true){ //if square directly above
-                    System.out.println("moving up");
+                    System.out.println("moving up 3");
                     players.get(index).moveUp();
                     latY--;
                     i--;
                 }
                 else if((i + 1) < 10 && board[i + 1][j] == true){ //if square directly below
-                    System.out.println("moving down");
+                    System.out.println("moving down 3");
                     players.get(index).moveDown();
                     latY++;
                     i++;
                 }
                 else if( (j -1) >= 0 && board[i][j - 1] == true){ //if square to the left
-                    System.out.println("moving left");
+                    System.out.println("moving left 3");
                     players.get(index).moveLeft();
                     latX--;
                     j--;
                 }
+                System.out.println("i = " + i + "\nj = " + j+"\nlatX= "+latX);
             } 
         }
+        /*
         for(int x = 0;x < dieValue; x++){
             //counterTemp++;
             if((j + 1) < 10 && board[i][j + 1] == true){ // if square to the right
-                System.out.println("moving right");
+                System.out.println("moving right 4");
                 players.get(index).moveRight();
                 capX++;
                 j++;
             }
             if((i - 1) >= 0 && board[i - 1][j] == true){ //if square directly above
-                System.out.println("moving up");
+                System.out.println("moving up 4");
                 players.get(index).moveUp();
                 capY--;
                 i--;
             }
             else if((i + 1) < 10 && board[i + 1][j] == true){ //if square directly below
-                System.out.println("moving down");
+                System.out.println("moving down 4");
                 players.get(index).moveDown();
                 capY++;
                 i++;
             }
             else if( (j -1) >= 0 && board[i][j - 1] == true){ //if square to the left
-                System.out.println("moving left");
+                System.out.println("moving left 4");
                 players.get(index).moveLeft();
                 capX--;
                 j--;
             }
+            System.out.println("i = " + i + "\nj = " + j+"\ncapX= "+capX);
         } 
+        */
     }
 
     public void startScreen(Graphics g){
