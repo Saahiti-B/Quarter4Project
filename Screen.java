@@ -49,7 +49,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
     //backend
     private JavaLand jl;
     boolean startVar; // to see if the start button has been pressed and the game has begun
-    private boolean[][] board;
+    private int[][] board;
     //rows
     private String row0;
     private String row1;
@@ -87,14 +87,14 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
 
     public Screen(){
         setLayout(null);
-        capX = 9;
-        capY = 0;
-        ameX = 9;
-        ameY = 0;
-        latX = 9;
-        latY = 0;
-        mocX = 9;
-        mocY = 0;
+        capX = 0;
+        capY = 9;
+        ameX = 0;
+        ameY = 9;
+        latX = 0;
+        latY = 9;
+        mocX = 0;
+        mocY = 9;
 
         playerTurn = 0;
         dieRoll = false;
@@ -106,16 +106,16 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         boardCinnamon = new Color(138, 86, 36);
         
         //rows 
-        row0 = "1111111111";
-        row1 = "1000000001";
-        row2 = "1011111101";
-        row3 = "1010000101";
-        row4 = "1010110101";
-        row5 = "1010110101";
-        row6 = "1010100101";
-        row7 = "1010111101";
-        row8 = "1010000001";
-        row9 = "1011111111";
+        row0 = "2222222223"; //1 is up, 2 is right, 3, is down, 4 is left
+        row1 = "1000000003";
+        row2 = "1022222303";
+        row3 = "1010000303";
+        row4 = "1010220303";
+        row5 = "1010110303";
+        row6 = "1010100303";
+        row7 = "1010144403";
+        row8 = "1010000003";
+        row9 = "101444444";
         
         //buttons
         die = new JButton("Roll Die");
@@ -147,7 +147,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         this.add(cButton);
         cButton.setVisible(false);
         
-        board = new boolean[10][10];
+        board = new int[10][10];
         actionCard = new ArrayList<ActionCard>();
         
         jl = new JavaLand();
@@ -207,9 +207,9 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         int y = 80;
         g.setColor(boardBeige);
         for(int i = 0; i < row0.length(); i++){
-            if(row0.charAt(i) == '1'){
+            if(row0.charAt(i) != '0'){
                 g.setColor(boardBeige);
-                board[0][i] = true;
+                board[0][i] = row0.charAt(i);
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
@@ -223,9 +223,9 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         y += 60;
         g.setColor(boardCamel);
         for(int i = 0; i < row1.length(); i++){
-            if(row1.charAt(i) == '1'){
+            if(row1.charAt(i) != '0'){
                 g.setColor(boardCamel);
-                board[1][i] = true;
+                board[1][i] = row1.charAt(i);
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
@@ -239,9 +239,9 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         y += 60;
         g.setColor(boardCinnamon);
         for(int i = 0; i < row2.length(); i++){
-            if(row2.charAt(i) == '1'){
+            if(row2.charAt(i) != '0'){
                 g.setColor(boardCinnamon);
-                board[2][i] = true;
+                board[2][i] = row2.charAt(i);
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
@@ -255,9 +255,9 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         y += 60;
         g.setColor(boardChocolate);
         for(int i = 0; i < row3.length(); i++){
-            if(row3.charAt(i) == '1'){
+            if(row3.charAt(i) != '0'){
                 g.setColor(boardChocolate);
-                board[3][i] = true;
+                board[3][i] = row3.charAt(i);
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
@@ -271,9 +271,9 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         y += 60;
         g.setColor(boardBeige);
         for(int i = 0; i < row4.length(); i++){
-            if(row4.charAt(i) == '1'){
+            if(row4.charAt(i) != '0'){
                 g.setColor(boardBeige);
-                board[4][i] = true;
+                board[4][i] = row4.charAt(i);
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
@@ -288,9 +288,9 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         
         g.setColor(boardChocolate);
         for(int i = 0; i < row5.length(); i++){
-            if(row5.charAt(i) == '1'){
+            if(row5.charAt(i) != '0'){
                 g.setColor(boardChocolate);
-                board[5][i] = true;
+                board[5][i] = row5.charAt(i);
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
@@ -305,9 +305,9 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         y += 60;
         g.setColor( boardCinnamon);
         for(int i = 0; i < row6.length(); i++){
-            if(row6.charAt(i) == '1'){
+            if(row6.charAt(i) != '0'){
                 g.setColor( boardCinnamon);
-                board[6][i] = true;
+                board[6][i] = row6.charAt(i);
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
@@ -322,9 +322,9 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         y += 60;
         g.setColor(boardBeige);
         for(int i = 0; i < row7.length(); i++){
-            if(row7.charAt(i) == '1'){
+            if(row7.charAt(i) != '0'){
                 g.setColor(boardBeige);
-                board[7][i] = true;
+                board[7][i] = row7.charAt(i);
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
@@ -339,9 +339,9 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         y += 60;
         g.setColor(boardCamel);
         for(int i = 0; i < row8.length(); i++){
-            if(row8.charAt(i) == '1'){
+            if(row8.charAt(i) != '0'){
                 g.setColor(boardCamel);
-                board[8][i] = true;
+                board[8][i] = row8.charAt(i);
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
@@ -356,9 +356,9 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         
         g.setColor(boardChocolate);
         for(int i = 0; i < row9.length(); i++){
-            if(row9.charAt(i) == '1'){
+            if(row9.charAt(i) != '0'){
                 g.setColor(boardChocolate);
-                board[9][i] = true;
+                board[9][i] = row9.charAt(i);
                 g.fillRect(x,y,60,60);
                 x+= 60;
             }
@@ -399,7 +399,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         g.drawString(Integer.toString(num), 708,212);
         //num is what the method diceRolled in JavaLand returns
     } 
-    public void checkMove(int index, int i, int j){
+    public void checkMove(int index, int i, int j){ // i is row, j is col
         int figurineX = 0;
         int figurineY = 0;
         if(index == 0){
@@ -447,9 +447,8 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
            System.out.println("i before move up: " + i);
            System.out.println("j : " + j);
            System.out.println("figurineY: " + figurineY);
-           //j = j+9;
-           //j = figurineY + 9;
-            if((i - 1) >= 0 && board[i - 1][j] == true){ //if square directly above
+           //1 is up, 2 is right, 3, is down, 4 is left
+            if((i - 1) >= 0 && board[i - 1][j] == 1){ //if square directly above
                 System.out.println("moving up 0");
                 players.get(index).moveUp();
                 figurineY--;
@@ -468,7 +467,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
                     latY = figurineY;
                 }
             }
-            else if((j + 1) < 10 && board[i][j + 1] == true){ // if square to the right
+            else if((j + 1) < 10 && board[i][j + 1] == 2){ // if square to the right
                 System.out.println("moving right 0");
                 players.get(index).moveRight();
                 figurineX++;
@@ -487,28 +486,11 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
                     latY = figurineY;
                 }
             }
-            else if((i + 1) < 10 && board[i + 1][j] == true){ //if square directly below
+            else if((i + 1) < 10 && board[i + 1][j] == 3){ //if square directly below
                 System.out.println("moving down 0");
                 players.get(index).moveDown();
-                if(index == 0){
-                    capX = figurineX;
-                    capY = figurineY;
-                } else if(index == 1){
-                    ameX = figurineX;
-                    ameY = figurineY;
-                } else if(index ==2){
-                    mocX = figurineX;
-                    mocY = figurineY;
-                } else if(index == 3){
-                    latX = figurineX;
-                    latY = figurineY;
-                }
                 figurineY++;
                 i++;
-            }
-            else if((j - 1) >= 0 && board[i][j - 1] == true){ //if square to the left
-                System.out.println("moving left 0");
-                players.get(index).moveLeft();
                 if(index == 0){
                     capX = figurineX;
                     capY = figurineY;
@@ -522,11 +504,27 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
                     latX = figurineX;
                     latY = figurineY;
                 }
+            }
+            else if((j - 1) >= 0 && board[i][j - 1] == 4){ //if square to the left
+                System.out.println("moving left 0");
+                players.get(index).moveLeft();
                 figurineX--;
                 j--;
+                if(index == 0){
+                    capX = figurineX;
+                    capY = figurineY;
+                } else if(index == 1){
+                    ameX = figurineX;
+                    ameY = figurineY;
+                } else if(index ==2){
+                    mocX = figurineX;
+                    mocY = figurineY;
+                } else if(index == 3){
+                    latX = figurineX;
+                    latY = figurineY;
+                }
             }
             System.out.println("i = " + i + "\nj = " + j+"\ncapX= "+capX);
-
         }
     }  
     public void startScreen(Graphics g){
@@ -556,8 +554,8 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
             dieRoll = true;
             dieValue = jl.diceRolled();
             s.playSound();
-            System.out.println("capX: " + capX + " capY: " + capY);
-            checkMove(0,capX, capY);
+            System.out.println("dieValue: " + dieValue + " capX: " + capX + " capY: " + capY);
+            checkMove(0,capY, capX);
         }
         else if(e.getSource() == start){
             startVar = true;
