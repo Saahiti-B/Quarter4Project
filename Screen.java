@@ -115,7 +115,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         row6 = "1010100303";
         row7 = "1010144403";
         row8 = "1010000003";
-        row9 = "101444444";
+        row9 = "1014444444";
         
         //buttons
         die = new JButton("Roll Die");
@@ -216,6 +216,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
             else{
                 g.setColor(Color.WHITE);
                 g.fillRect(x,y,60,60);
+                board[0][i] = 0;
                 x+=60;
             }
         }
@@ -232,6 +233,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
             else{
                 g.setColor(Color.WHITE);
                 g.fillRect(x,y,60,60);
+                board[1][i] = 0;
                 x+=60;
             }
         }
@@ -248,6 +250,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
             else{
                 g.setColor(Color.WHITE);
                 g.fillRect(x,y,60,60);
+                board[2][i] = 0;
                 x+=60;
             }
         }
@@ -264,6 +267,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
             else{
                 g.setColor(Color.WHITE);
                 g.fillRect(x,y,60,60);
+                board[3][i] = 0;
                 x+=60;
             }
         }
@@ -280,6 +284,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
             else{
                 g.setColor(Color.WHITE);
                 g.fillRect(x,y,60,60);
+                board[4][i] = 0;
                 x+=60;
             }
         }
@@ -297,6 +302,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
             else{
                 g.setColor(Color.WHITE);
                 g.fillRect(x,y,60,60);
+                board[5][i] = 0;
                 x+=60;
             }
         }
@@ -314,6 +320,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
             else{
                 g.setColor(Color.WHITE);
                 g.fillRect(x,y,60,60);
+                board[6][i] = 0;
                 x+=60;
             }
         }
@@ -331,6 +338,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
             else{
                 g.setColor(Color.WHITE);
                 g.fillRect(x,y,60,60);
+                board[7][i] = 0;
                 x+=60;
             }
         }
@@ -348,12 +356,13 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
             else{
                 g.setColor(Color.WHITE);
                 g.fillRect(x,y,60,60);
+                board[8][i] = 0;
                 x+=60;
             }
         }
         x = 50;
         y +=60;
-        
+
         g.setColor(boardChocolate);
         for(int i = 0; i < row9.length(); i++){
             if(row9.charAt(i) != '0'){
@@ -365,6 +374,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
             else{
                 g.setColor(Color.WHITE);
                 g.fillRect(x,y,60,60);
+                board[9][i] = 0;
                 x+=60;
             }
         }
@@ -417,37 +427,54 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         }
         
         for(int x = 0;x < dieValue; x++){
-            /*
-                //move boxes
-            if(figurineX == 9 && figurineY == 9){
-                //trigger the card
-                
+            System.out.println("i:" + i + "\tj: " + j);
+            //System.out.println("i before move up: " + i);
+            //System.out.println("j : " + j);
+            //System.out.println("figurineY: " + figurineY);
+            //1 is up, 2 is right, 3, is down, 4 is left
+            System.out.println("Before first conditional");
+            if((i - 1) >= 0 || (i + 1) < 10 || (j - 1) >= 0 || (j + 1) < 10){
+                System.out.println("Entering first conditional");
+                System.out.println("board[i][j]: "+ board[i][j]);
+                if(board[i][j] == 1){
+                    System.out.println("moving up 0");
+                    players.get(index).moveUp();
+                    figurineY--;
+                    i--;
+                }else if(board[i][j] == 2){
+                    System.out.println("moving right 0");
+                    players.get(index).moveRight();
+                    figurineX++;
+                    j++;
+                }else if(board[i][j] == 3){
+                    System.out.println("moving down 0");
+                    players.get(index).moveDown();
+                    figurineY++;
+                    i++;
+                }else if(board[i][j] == 4){
+                    System.out.println("moving left 0");
+                    players.get(index).moveLeft();
+                    figurineX--;
+                    j--;
+                }
+                System.out.println("capX before: "+capX);
+                if(index == 0){
+                    capX = figurineX;
+                    capY = figurineY;
+                } else if(index == 1){
+                    ameX = figurineX;
+                    ameY = figurineY;
+                } else if(index ==2){
+                    mocX = figurineX;
+                    mocY = figurineY;
+                } else if(index == 3){
+                    latX = figurineX;
+                    latY = figurineY;
+                }
+                System.out.println("capX after: "+capX);
             }
-            else if(figurineX == 9 && figurineY == 0){
-                //trigger 2nd
-            }
-            else if(figurineX == 0 && figurineY == 9 ){
-                //3rd card
-            }
-            //question marks
-            else if(figurineX == 3 && figurineY == 0){
-                //trigger the card
-                showQ0 = true;
-                
-            }
-            else if(figurineX == 3 && figurineY == 9){
-                //trigger the card
-                showQ1 = true;
-            }
-            else if(figurineX ==  7&& figurineY == 6){
-                //trigger the card
-                showQ2 = true;
-            }
-            */
-           System.out.println("i before move up: " + i);
-           System.out.println("j : " + j);
-           System.out.println("figurineY: " + figurineY);
-           //1 is up, 2 is right, 3, is down, 4 is left
+            
+           /*
             if((i - 1) >= 0 && board[i - 1][j] == 1){ //if square directly above
                 System.out.println("moving up 0");
                 players.get(index).moveUp();
@@ -524,6 +551,7 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
                     latY = figurineY;
                 }
             }
+            */
             System.out.println("i = " + i + "\nj = " + j+"\ncapX= "+capX);
         }
     }  
@@ -547,7 +575,24 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
         g.drawString("3) If your figurine lands on an action or trivia card square,",660,375);
         g.drawString("follow the prompts to complete your turn!",660,400);
     }
-    public void drawTriviaQuestions(){}
+    public void drawTriviaQuestions(){
+        /*
+        boolean showQ;
+        if (showQ0 == true){
+            aButton.setVisible(true);
+            bButton.setVisible(true);
+            cButton.setVisible(true);
+            if(e.getSource(aButton) == start){
+                //code 
+            }
+        } else if (showQ1 == true){
+            aButton.setVisible(true);
+            bButton.setVisible(true);
+            cButton.setVisible(true);
+        }
+        */
+        //return showQ;
+    }
     //button methods
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == die){
@@ -562,17 +607,11 @@ public class Screen extends JPanel implements MouseListener, ActionListener{
             start.setVisible(false);
             die.setVisible(true);
         }
-        /*
-        else if (showQ0 == true){
-            aButton.setVisible(true);
-            bButton.setVisible(true);
-            cButton.setVisible(true);
-            if(e.getSource(aButton) == start){
-                //code 
-            }
+        
+        /* if (showQ0 = true){
+            
         }
         */
-    //else if (showQuestionA = true){
         //code for whichever button is true and pressed then continue, for false options, set player invisible
         repaint();
     }
